@@ -70,11 +70,13 @@ func NewConfig(config VipConfig) (*Config, error) {
 	return s, err
 }
 
-func DefaultConfig() (*Config, error) {
+func DefaultConfig(configs map[string]interface{}) (*Config, error) {
 	vipConfig := VipConfig{
 		ConfigName: "config",
 		ConfigPath: ".",
 		ConfigType: "yml",
+		Configs:    configs,
+		ConfigRun:  DefaultConfigReloadRun,
 	}
 	return NewConfig(vipConfig)
 }
